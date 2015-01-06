@@ -8,12 +8,7 @@ namespace ZHAW.GpsTracker.Web.Hubs
     {
         static readonly List<Location> Locations = new List<Location>();
 
-        public IEnumerable<Location> GetLocations()
-        {
-            return Locations;
-        }
-
-        public void AddLocation(Location location)
+        public void PropagatePosition(Location location)
         {
             if (Locations.Any(x => x.Name == location.Name))
             {
@@ -22,7 +17,7 @@ namespace ZHAW.GpsTracker.Web.Hubs
 
             Locations.Add(location);
 
-            Clients.All.addLocations(Locations);
+            Clients.All.updatePosition(Locations);
         }
     }
 }
