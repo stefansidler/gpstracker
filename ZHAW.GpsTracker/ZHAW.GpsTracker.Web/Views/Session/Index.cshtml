@@ -27,8 +27,8 @@
     <script src="~/signalr/hubs"></script>
     <script>
         // Reference the auto-generated proxy for the hub.
-        var maps = $.connection.mapHub;
-        maps.client.addLocations = function (data) {
+        var mapHub = $.connection.mapHub;
+        mapHub.client.addLocations = function (data) {
             addPoints(data);
         };
 
@@ -39,11 +39,10 @@
                         var lat = position.coords.latitude;
                         var lng = position.coords.longitude;
                         var name = 'test';//$('#displayname').val();
-                        maps.server.addLocation({ name: name, lat: lat, lng: lng, speed: speed });
+                        mapHub.server.addLocation({ name: name, lat: lat, lng: lng, speed: speed });
 
                         map.panTo(new google.maps.LatLng(lat, lng));
                         map.setZoom(10);
-
                     },
                     function(error) {
                         alert("Error occurred. Error code: " + error.code);
@@ -59,7 +58,7 @@
                     var lat = position.coords.latitude;
                     var lng = position.coords.longitude;
                     var name = 'test';// $('#displayname').val();
-                    maps.server.addLocation({ name: name, lat: lat, lng: lng, speed: speed });
+                    mapHub.server.addLocation({ name: name, lat: lat, lng: lng, speed: speed });
                 });
             };
 

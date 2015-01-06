@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Timers;
-using System.Web;
 using Microsoft.AspNet.SignalR;
 
 namespace ZHAW.GpsTracker.Web.Hubs
