@@ -14,9 +14,24 @@ namespace ZHAW.GpsTracker.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "Session",
+                url: "Session/{sessionKey}",
+                defaults: new
+                {
+                    controller = "Session", 
+                    action = "Index", 
+                    sessionKey = UrlParameter.Optional
+                }
+            );
+
+            routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                url: "{controller}/{action}",
+                defaults: new
+                {
+                    controller = "Home", 
+                    action = "Index"
+                }
             );
         }
     }
