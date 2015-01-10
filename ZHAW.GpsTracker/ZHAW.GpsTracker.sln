@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30324.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZHAW.GpsTracker.Web", "ZHAW.GpsTracker.Web\ZHAW.GpsTracker.Web.csproj", "{6EF8CEEA-C7F5-4830-A0BA-9910F0B2579D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZHAW.GpsTracker.Data", "ZHAW.GpsTracker.Data\ZHAW.GpsTracker.Data.csproj", "{432FBC93-AB65-4DB7-A0BB-72352C81B728}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{6EF8CEEA-C7F5-4830-A0BA-9910F0B2579D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6EF8CEEA-C7F5-4830-A0BA-9910F0B2579D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6EF8CEEA-C7F5-4830-A0BA-9910F0B2579D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{432FBC93-AB65-4DB7-A0BB-72352C81B728}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{432FBC93-AB65-4DB7-A0BB-72352C81B728}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{432FBC93-AB65-4DB7-A0BB-72352C81B728}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{432FBC93-AB65-4DB7-A0BB-72352C81B728}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

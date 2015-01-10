@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNet.SignalR;
+using ZHAW.GpsTracker.Data;
+using ZHAW.GpsTracker.Data.Model;
 
 namespace ZHAW.GpsTracker.Web.Hubs
 {
@@ -10,6 +12,11 @@ namespace ZHAW.GpsTracker.Web.Hubs
 
         public void PropagatePosition(Location location)
         {
+
+            using (var dbContext = new TrackerContext())
+            {
+                //dbContext.Users.Add(new User{Name = "Hans", Session = })
+            }
             if (Locations.Any(x => x.Name == location.Name))
             {
                 Locations.Remove(Locations.First(x => x.Name == location.Name));
