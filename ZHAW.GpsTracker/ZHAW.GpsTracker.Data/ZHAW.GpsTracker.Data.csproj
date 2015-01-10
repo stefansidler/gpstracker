@@ -46,6 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201412091937493_AddConstraints.cs" />
+    <Compile Include="Migrations\201412091937493_AddConstraints.Designer.cs">
+      <DependentUpon>201412091937493_AddConstraints.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Position.cs" />
     <Compile Include="Model\Session.cs" />
@@ -56,6 +60,11 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201412091937493_AddConstraints.resx">
+      <DependentUpon>201412091937493_AddConstraints.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

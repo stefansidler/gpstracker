@@ -68,7 +68,9 @@
             if (data.length > 0) {
                 addGoogleMapPoints(data);
             }
-        }        function addInfoWindow(marker, message) {
+        }
+
+        function addInfoWindow(marker, message) {
             var info = message;
 
             var infoWindow = new google.maps.InfoWindow({
@@ -118,7 +120,8 @@
             }
 
             //googleMap.panTo(new google.maps.LatLng(pnt.Lat, pnt.Lng));
-        }
+        }
+
     </script>
 }
 
