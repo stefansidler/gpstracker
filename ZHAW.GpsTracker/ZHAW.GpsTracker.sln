@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZHAW.GpsTracker.Web", "ZHAW
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZHAW.GpsTracker.Data", "ZHAW.GpsTracker.Data\ZHAW.GpsTracker.Data.csproj", "{432FBC93-AB65-4DB7-A0BB-72352C81B728}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZHAW.GpsTracker.Web.Tests", "ZHAW.GpsTracker.Web.Tests\ZHAW.GpsTracker.Web.Tests.csproj", "{AC335E59-5EB6-4EC1-ADB7-2E73D9BA9821}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZHAW.GpsTracker.Data.TestClient", "ZHAW.GpsTracker.Data.TestClient\ZHAW.GpsTracker.Data.TestClient.csproj", "{9AAD4A96-6C6B-45D9-9F0D-27417A9684CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{432FBC93-AB65-4DB7-A0BB-72352C81B728}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{432FBC93-AB65-4DB7-A0BB-72352C81B728}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{432FBC93-AB65-4DB7-A0BB-72352C81B728}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC335E59-5EB6-4EC1-ADB7-2E73D9BA9821}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC335E59-5EB6-4EC1-ADB7-2E73D9BA9821}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC335E59-5EB6-4EC1-ADB7-2E73D9BA9821}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC335E59-5EB6-4EC1-ADB7-2E73D9BA9821}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AAD4A96-6C6B-45D9-9F0D-27417A9684CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AAD4A96-6C6B-45D9-9F0D-27417A9684CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AAD4A96-6C6B-45D9-9F0D-27417A9684CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AAD4A96-6C6B-45D9-9F0D-27417A9684CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

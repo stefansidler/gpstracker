@@ -7,6 +7,9 @@ namespace ZHAW.GpsTracker.Web.Controllers
         // GET: Session
         public ActionResult Index(string sessionKey)
         {
+            if (string.IsNullOrWhiteSpace(sessionKey))
+                return new HttpNotFoundResult();
+
             // TODO: Get session from db
             return View();
         }

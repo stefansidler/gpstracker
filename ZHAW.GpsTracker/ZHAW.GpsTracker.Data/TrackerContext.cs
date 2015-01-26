@@ -10,8 +10,8 @@ namespace ZHAW.GpsTracker.Data
             
         }
 
-        public DbSet<User> Users { get; set; }
-        public DbSet<Position> Positions { get; set; }
-        public DbSet<Session> Sessions { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Position> Positions { get; set; }
+        public virtual DbSet<Session> Sessions { get; set; }
     }
 }

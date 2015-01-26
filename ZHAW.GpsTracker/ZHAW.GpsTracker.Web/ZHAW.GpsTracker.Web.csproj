@@ -224,7 +224,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -243,17 +245,17 @@
     <Content Include="Views\Session\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ZHAW.GpsTracker.Data\ZHAW.GpsTracker.Data.csproj">
-      <Project>{432fbc93-ab65-4db7-a0bb-72352c81b728}</Project>
-      <Name>ZHAW.GpsTracker.Data</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ZHAW.GpsTracker.Data\ZHAW.GpsTracker.Data.csproj">
+      <Project>{432fbc93-ab65-4db7-a0bb-72352c81b728}</Project>
+      <Name>ZHAW.GpsTracker.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
