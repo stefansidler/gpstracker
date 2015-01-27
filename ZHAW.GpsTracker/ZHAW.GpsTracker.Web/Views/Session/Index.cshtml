@@ -4,6 +4,7 @@
 
 @section scripts
 {
+    <input type="hidden" id="displayname" />
     <!-- Initialize google maps -->
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
     <script>
@@ -35,7 +36,9 @@
 
         // Initialize
         var sessionKey = $(location).attr('pathname').split('/')[2];
-        $.connection.hub.start().done(function() {
+        $.connection.hub.start().done(function () {
+            $('#displayname').val(prompt('Enter your name:', 'User'));
+
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(position) {
                         propagatePosition(position);
@@ -65,7 +68,7 @@
             var speed = position.coords.speed != null ? position.coords.speed : 0;
             var lat = position.coords.latitude;
             var lng = position.coords.longitude;
-            var name = null; // $('#displayname').val();
+            var name = $('#displayname').val();
             if (!(lat === 0.0 && lng === 0.0)) {
                 mapHub.server.propagatePosition({ name: name, lat: lat, lng: lng, speed: speed }, sessionKey);
             }
