@@ -29,7 +29,7 @@
         var mapHub = $.connection.mapHub;
 
         // Define client methods (can be called by server)
-        mapHub.client.updatePosition = function (data) {
+        mapHub.client.updatePosition = function(data) {
             addPoints(data);
         };
 
@@ -38,13 +38,9 @@
         $.connection.hub.start().done(function() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(position) {
-                        var speed = position.coords.speed != null ? position.coords.speed : 0;
-                        var lat = position.coords.latitude;
-                        var lng = position.coords.longitude;
-                        var name = null;//$('#displayname').val();
-                        mapHub.server.propagatePosition({ name: name, lat: lat, lng: lng, speed: speed }, sessionKey);
+                        propagatePosition(position);
 
-                        map.panTo(new google.maps.LatLng(lat, lng));
+                        map.panTo(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
                         map.setZoom(10);
                     },
                     function(error) {
@@ -57,15 +53,23 @@
                     });
 
                 navigator.geolocation.watchPosition(function(position) {
-                    var speed = position.coords.speed != null ? position.coords.speed : 0;
-                    var lat = position.coords.latitude;
-                    var lng = position.coords.longitude;
-                    var name = null;// $('#displayname').val();
-                    mapHub.server.propagatePosition({ name: name, latitude: lat, longitude: lng, speed: speed }, sessionKey);
+                    propagatePosition(position);
+
+                    map.panTo(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
                 });
             };
 
         });
+
+        function propagatePosition(position) {
+            var speed = position.coords.speed != null ? position.coords.speed : 0;
+            var lat = position.coords.latitude;
+            var lng = position.coords.longitude;
+            var name = null; // $('#displayname').val();
+            if (!(lat === 0.0 && lng === 0.0)) {
+                mapHub.server.propagatePosition({ name: name, lat: lat, lng: lng, speed: speed }, sessionKey);
+            }
+        }
 
         function addPoints(data) {
             if (data.length > 0) {
@@ -78,14 +82,14 @@
                 content: message
             });
 
-            google.maps.event.addListener(marker, 'click', function () {
+            google.maps.event.addListener(marker, 'click', function() {
                 infoWindow.open(map, marker);
             });
         }
 
         var markersArray = [];
 
-        google.maps.Map.prototype.clearMarkers = function () {
+        google.maps.Map.prototype.clearMarkers = function() {
             for (var i = 0; i < markersArray.length; i++) {
                 markersArray[i].setMap(null);
             }
@@ -119,8 +123,6 @@
 
                 addInfoWindow(marker, contentString);
             }
-
-            //googleMap.panTo(new google.maps.LatLng(pnt.Lat, pnt.Lng));
         }
 
     </script>

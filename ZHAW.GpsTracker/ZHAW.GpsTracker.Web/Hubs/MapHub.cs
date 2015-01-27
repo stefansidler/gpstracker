@@ -12,6 +12,9 @@ namespace ZHAW.GpsTracker.Web.Hubs
     {
         public void PropagatePosition(Location location, string sessionKey)
         {
+            if (location.Lat == 0.0 || location.Lng == 0.0)
+                return;
+
             // Add user to SignalR group (current session)
             Groups.Add(Context.ConnectionId, sessionKey);
 
