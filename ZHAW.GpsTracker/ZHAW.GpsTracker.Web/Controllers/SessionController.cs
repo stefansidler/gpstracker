@@ -10,7 +10,6 @@ namespace ZHAW.GpsTracker.Web.Controllers
             if (string.IsNullOrWhiteSpace(sessionKey))
                 return new HttpNotFoundResult();
 
-            // TODO: Get session from db
             return View();
         }
     }

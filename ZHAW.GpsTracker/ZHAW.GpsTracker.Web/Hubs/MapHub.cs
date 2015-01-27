@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNet.SignalR;
 using ZHAW.GpsTracker.Data;
 using ZHAW.GpsTracker.Data.Model;
@@ -16,14 +17,15 @@ namespace ZHAW.GpsTracker.Web.Hubs
 
             using (var dbContext = new TrackerContext())
             {
-                Session currentSession = dbContext.Sessions.SingleOrDefault(x => x.Key == sessionKey) ??
+                Session currentSession = dbContext.Sessions.Include(x => x.Users).Include(x => x.Users.Select(y => y.Positions)).SingleOrDefault(x => x.Key == sessionKey) ??
                                      dbContext.Sessions.Add(new Session
                                      {
                                          Key = sessionKey,
-                                         Name = sessionKey
+                                         Name = sessionKey,
+                                         Users = new List<User>()
                                      });
 
-                User currentUser = currentSession.Users.SingleOrDefault(x => x.Name == location.Name) ??
+                User currentUser = currentSession.Users.SingleOrDefault(x => x.Name == location.Name || x.Name == Context.ConnectionId) ??
                                    dbContext.Users.Add(new User
                                    {
                                        Name = location.Name ?? Context.ConnectionId,
@@ -40,8 +42,19 @@ namespace ZHAW.GpsTracker.Web.Hubs
                 });
                 dbContext.SaveChanges();
 
-                var latestLocationsOfCurrentSession = currentSession.Users.Select(x => x.Positions.OrderByDescending(y => y.Timestamp).Last());
-                Clients.Group(sessionKey).updatePosition(latestLocationsOfCurrentSession);
+                var latestLocationsOfCurrentSession = currentSession.Users.ToList().Select(x => x.Positions.OrderByDescending(y => y.Timestamp).First());
+
+                Clients.Group(sessionKey)
+                    .updatePosition(
+                        latestLocationsOfCurrentSession.Select(
+                            x =>
+                                new Location
+                                {
+                                    Name = x.User.Name,
+                                    Lat = double.Parse(x.Latitude),
+                                    Lng = double.Parse(x.Longitude),
+                                    Speed = x.Speed
+                                }));
             }
         }
     }

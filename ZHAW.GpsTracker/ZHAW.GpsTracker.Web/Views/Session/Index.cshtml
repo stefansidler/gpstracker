@@ -61,7 +61,7 @@
                     var lat = position.coords.latitude;
                     var lng = position.coords.longitude;
                     var name = null;// $('#displayname').val();
-                    mapHub.server.propagatePosition({ name: name, lat: lat, lng: lng, speed: speed }, sessionKey);
+                    mapHub.server.propagatePosition({ name: name, latitude: lat, longitude: lng, speed: speed }, sessionKey);
                 });
             };
 

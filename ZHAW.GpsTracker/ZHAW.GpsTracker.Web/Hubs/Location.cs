@@ -1,4 +1,4 @@
-﻿namespace ZHAW.GpsTracker.Web.Hubs
+namespace ZHAW.GpsTracker.Web.Hubs
 {
     public class Location
     {

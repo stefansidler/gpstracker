@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using ZHAW.GpsTracker.Web.Helper;
 
 namespace ZHAW.GpsTracker.Web.Controllers
 {
@@ -10,7 +8,7 @@ namespace ZHAW.GpsTracker.Web.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.SessionKey = Base36.Encode((ulong) DateTime.Now.Ticks);
 
             return View();
         }
