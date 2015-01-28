@@ -12,6 +12,7 @@
     <script>
         var map;
         var sessionKey = $(location).attr('pathname').split('/')[2];
+        var cookieUsernameKey = 'gps_username_' + sessionKey;
 
         function initialize() {
 
@@ -41,40 +42,50 @@
         // Initialize
         $.connection.hub.start().done(function() {
 
-            if ($('#displayname').val() === '') {
-                $('#displayname').val(prompt('Enter your name:', 'User'));
+            if ($.cookie(cookieUsernameKey) === undefined) {
+                var username = prompt('Enter your name:', 'User');
+                $.cookie(cookieUsernameKey, username, { expires: 7 });
             }
+            $('#displayname').text($.cookie(cookieUsernameKey));
 
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(position) {
-                        propagatePosition(position);
+                    propagatePosition(position);
 
-                        map.panTo(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
-                        map.setZoom(10);
-                    },
-                    function(error) {
-                        alert("Error occurred. Error code: " + error.code);
-                        // error.code can be:
-                        //   0: unknown error
-                        //   1: permission denied
-                        //   2: position unavailable (error response from locaton provider)
-                        //   3: timed out
-                    });
+                    map.panTo(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+                    map.setZoom(10);
+                }, handleError);
 
                 navigator.geolocation.watchPosition(function(position) {
                     propagatePosition(position);
 
                     map.panTo(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
-                });
+                }, handleError);
             };
 
         });
+
+        function handleError(error) {
+            var msg = '';
+            switch (error.code) {
+            case 0: //   0: unknown error
+            case 2: //   2: position unavailable (error response from locaton provider)
+            case 3: //   3: timed out
+            default:
+                msg = 'An unknown error occured while trying to find your location. Please try again later.';
+                break;
+            case 1: //   1: permission denied
+                msg = 'Please enable and allow location services on your device for this webiste.';
+                break;
+            }
+            alert(msg);
+        }
 
         function propagatePosition(position) {
             var speed = position.coords.speed != null ? position.coords.speed : 0;
             var lat = position.coords.latitude;
             var lng = position.coords.longitude;
-            var name = $('#displayname').val();
+            var name = $.cookie(cookieUsernameKey);
             if (!(lat === 0.0 && lng === 0.0)) {
                 mapHub.server.propagatePosition({ username: name, lat: lat, lng: lng, speed: speed }, sessionKey);
             }
@@ -137,6 +148,7 @@
     </script>
 }
 
-<input type="hidden" id="displayname" />
+<div class="container"><b>Your Name:</b> <span class="label label-info" id="displayname"></span></div>
+<br/>
 <div id="map-canvas"></div>
 
