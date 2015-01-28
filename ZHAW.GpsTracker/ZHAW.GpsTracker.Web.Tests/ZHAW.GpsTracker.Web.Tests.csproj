@@ -69,6 +69,8 @@
   <ItemGroup>
     <Compile Include="Api\FakePositionService.cs" />
     <Compile Include="Api\LocationsControllerTests.cs" />
+    <Compile Include="Hubs\MapHubTests.cs" />
+    <Compile Include="Hubs\TestableMapHub.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
+using System.Web.WebPages;
 using Microsoft.AspNet.SignalR;
+using Microsoft.AspNet.SignalR.Hubs;
 using ZHAW.GpsTracker.Data.Model;
 using ZHAW.GpsTracker.Services;
 
@@ -22,10 +24,10 @@ namespace ZHAW.GpsTracker.Web.Hubs
         public void PropagatePosition(Location location, string sessionKey)
         {
             if (location.Lat == 0.0 || location.Lng == 0.0)
-                return;
+                throw new ArgumentException("Location is empty");
 
             // Add user to SignalR group (current session)
-            Groups.Add(Context.ConnectionId, sessionKey);
+            GetGroupManager().Add(GetContext().ConnectionId, sessionKey);
 
             Session currentSession = _sessionService.CreateGetSession(sessionKey);
 
@@ -58,6 +60,16 @@ namespace ZHAW.GpsTracker.Web.Hubs
                 Timestamp = DateTime.Now,
                 User = currentUser
             });
+        }
+
+        protected virtual IGroupManager GetGroupManager()
+        {
+            return Groups;
+        }
+
+        protected virtual HubCallerContext GetContext()
+        {
+            return Context;
         }
     }
 }

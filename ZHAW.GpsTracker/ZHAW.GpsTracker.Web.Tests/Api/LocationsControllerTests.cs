@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using NSubstitute;
 using NUnit.Framework;
+using ZHAW.GpsTracker.Services;
 using ZHAW.GpsTracker.Web.Api;
 using ZHAW.GpsTracker.Web.Hubs;
 
