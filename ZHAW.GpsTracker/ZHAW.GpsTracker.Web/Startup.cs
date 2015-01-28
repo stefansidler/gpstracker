@@ -1,15 +1,13 @@
-﻿using System.Web.Mvc;
-using Microsoft.AspNet.SignalR;
+﻿using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
 using Microsoft.AspNet.SignalR.Infrastructure;
 using Microsoft.Owin;
-using Ninject;
 using Owin;
-using ZHAW.GpsTracker.Services;
+using ZHAW.GpsTracker.Web;
 using ZHAW.GpsTracker.Web.App_Start;
 using ZHAW.GpsTracker.Web.Hubs;
 
-[assembly: OwinStartup(typeof(ZHAW.GpsTracker.Web.Startup))]
+[assembly: OwinStartup(typeof(Startup))]
 namespace ZHAW.GpsTracker.Web
 {
     public class Startup

@@ -56,6 +56,10 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Http, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.1.2\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -63,9 +67,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Hubs\MapHubTests.cs" />
+    <Compile Include="Api\FakePositionService.cs" />
+    <Compile Include="Api\LocationsControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Hubs\TestableMapHub.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -75,6 +79,10 @@
     <ProjectReference Include="..\ZHAW.GpsTracker.Data\ZHAW.GpsTracker.Data.csproj">
       <Project>{432FBC93-AB65-4DB7-A0BB-72352C81B728}</Project>
       <Name>ZHAW.GpsTracker.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ZHAW.GpsTracker.Services\ZHAW.GpsTracker.Services.csproj">
+      <Project>{17552B86-CF33-4F49-AD2D-493D647C2E54}</Project>
+      <Name>ZHAW.GpsTracker.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\ZHAW.GpsTracker.Web\ZHAW.GpsTracker.Web.csproj">
       <Project>{6EF8CEEA-C7F5-4830-A0BA-9910F0B2579D}</Project>
