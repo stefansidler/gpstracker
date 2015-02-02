@@ -1,9 +1,15 @@
-﻿<main class="bs-docs-masthead" id="content" role="main">
+﻿<script>
+    function enterSession() {
+        window.location.href = '@Url.RouteUrl("Session")/' + $('#sessionKey').val();
+    }
+</script>
+
+<main class="bs-docs-masthead" id="content" role="main">
     <div class="container">
         <span class="bs-docs-booticon bs-docs-booticon-lg bs-docs-booticon-outline">G</span>
-        <p id="test" class="lead">xxx</p>
+        <input id="sessionKey" type="text" class="input-sm" placeholder="Session Key" /><br/><br/>
         <p class="lead">
-            <a href="#" class="btn btn-outline-inverse btn-lg">Enter Session</a>
+            <a href="#" class="btn btn-outline-inverse btn-lg" onclick="enterSession()">Enter Session</a>
         </p>
         <a href="@Url.RouteUrl("Session", new { sessionKey = ViewBag.SessionKey })">&gt; Or start a new session</a>
     </div>
@@ -12,31 +18,31 @@
 <div class="bs-docs-featurette">
     <div class="container">
         <h2 class="bs-docs-featurette-title">Designed for everyone, everywhere.</h2>
-        <p class="lead">Bootstrap makes front-end web development faster and easier. It's made for folks of all skill levels, devices of all shapes, and projects of all sizes.</p>
+        <p class="lead">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
 
         <hr class="half-rule">
 
         <div class="row">
             <div class="col-sm-4">
                 <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                <h3>Preprocessors</h3>
-                <p>Bootstrap ships with vanilla CSS, but its source code utilizes the two most popular CSS preprocessors, <a href="../css/#less">Less</a> and <a href="../css/#sass">Sass</a>. Quickly get started with precompiled CSS or build on the source.</p>
+                <h3>Lorem ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
             </div>
             <div class="col-sm-4">
                 <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
-                <h3>One framework, every device.</h3>
-                <p>Bootstrap easily and efficiently scales your websites and applications with a single code base, from phones to tablets to desktops with CSS media queries.</p>
+                <h3>Lorem ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
             </div>
             <div class="col-sm-4">
                 <span class="glyphicon glyphicon-camera" aria-hidden="true"></span>
-                <h3>Full of features</h3>
-                <p>With Bootstrap, you get extensive and beautiful documentation for common HTML elements, dozens of custom HTML and CSS components, and awesome jQuery plugins.</p>
+                <h3>Lorem ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
             </div>
         </div>
 
         <hr class="half-rule">
 
-        <p class="lead">Bootstrap is open source. It's hosted, developed, and maintained on GitHub.</p>
-        <a href="https://github.com/twbs/bootstrap" class="btn btn-outline btn-lg">View the GitHub project</a>
+        <p class="lead">GSP-Tracker is open source. It's hosted, developed, and maintained on GitHub.</p>
+        <a href="https://github.com/infinitemonkey/gpstracker" class="btn btn-outline btn-lg">View the GitHub project</a>
     </div>
 </div>
