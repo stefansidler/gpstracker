@@ -74,6 +74,7 @@
     <Compile Include="Api\FakePositionService.cs" />
     <Compile Include="Api\LocationsControllerTests.cs" />
     <Compile Include="Controllers\SessionControllerTests.cs" />
+    <Compile Include="Helper\Base36Tests.cs" />
     <Compile Include="Hubs\MapHubTests.cs" />
     <Compile Include="Hubs\TestableMapHub.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

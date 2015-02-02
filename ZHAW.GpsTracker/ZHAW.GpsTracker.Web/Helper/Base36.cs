@@ -38,6 +38,9 @@ namespace ZHAW.GpsTracker.Web.Helper
 
         public static string Reverse(string s)
         {
+            if (s == null)
+                throw new ArgumentException("s is null");
+
             var charArray = s.ToCharArray();
             Array.Reverse(charArray);
             return new string(charArray);
