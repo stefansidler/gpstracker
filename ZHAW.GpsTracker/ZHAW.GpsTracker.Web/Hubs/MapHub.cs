@@ -27,7 +27,7 @@ namespace ZHAW.GpsTracker.Web.Hubs
                 throw new ArgumentException("Location is empty");
 
             // Add user to SignalR group (current session)
-            GetGroupManager().Add(GetContext().ConnectionId, sessionKey);
+            Groups.Add(Context.ConnectionId, sessionKey);
 
             Session currentSession = _sessionService.CreateGetSession(sessionKey);
 
@@ -60,16 +60,6 @@ namespace ZHAW.GpsTracker.Web.Hubs
                 Timestamp = DateTime.Now,
                 User = currentUser
             });
-        }
-
-        protected virtual IGroupManager GetGroupManager()
-        {
-            return Groups;
-        }
-
-        protected virtual HubCallerContext GetContext()
-        {
-            return Context;
         }
     }
 }

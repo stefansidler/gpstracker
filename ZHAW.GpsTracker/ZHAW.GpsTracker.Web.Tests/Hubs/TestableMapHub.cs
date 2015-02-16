@@ -13,16 +13,8 @@ namespace ZHAW.GpsTracker.Web.Tests.Hubs
             : base(sessionServcie, userService, positionService)
         {
             Clients = CreateClientsContext();
-        }
-
-        protected override IGroupManager GetGroupManager()
-        {
-            return Substitute.For<IGroupManager>();
-        }
-
-        protected override HubCallerContext GetContext()
-        {
-            return Substitute.For<HubCallerContext>();
+            Context = Substitute.For<HubCallerContext>();
+            Groups = Substitute.For<IGroupManager>();
         }
 
         private static IHubCallerConnectionContext<dynamic> CreateClientsContext()

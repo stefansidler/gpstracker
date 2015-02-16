@@ -43,17 +43,18 @@ namespace ZHAW.GpsTracker.Web.Tests.Hubs
         [Test]
         public void PropagatePosition_UserDoesNotExist_CallCreateUser()
         {
+            // Arrange
             var fakeSessionService = Substitute.For<ISessionService>();
             var testSession = new Session {Users = new List<User>()};
             fakeSessionService.CreateGetSession("sessionkey").Returns(testSession);
             var fakeUserService = Substitute.For<IUserService>();
-            fakeUserService.CreateUser("username", testSession);
             var fakePositionService = Substitute.For<IPositionService>();
-
             var sut = new TestableMapHub(fakeSessionService, fakeUserService, fakePositionService);
 
-            sut.PropagatePosition(new Location { Lat = 1, Lng = 1 }, "sessionkey");
+            // Act
+            sut.PropagatePosition(new Location { Lat = 1, Lng = 1, Username = "username" }, "sessionkey");
 
+            // Assert
             fakeUserService.Received(1).CreateUser("username", testSession);
         }
 
